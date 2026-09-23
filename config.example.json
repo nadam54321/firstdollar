@@ -1,0 +1,19 @@
+{
+  "accounts": ["your_handle", "your_company"],
+  "product_url": "https://example.com",
+  "timezone": "UTC",
+  "competitors": ["Competitor One", "Competitor Two"],
+  "themes": [],
+  "searches": [
+    { "label": "pain with an incumbent", "query": "(\"Competitor One\" OR \"Competitor Two\") (expensive OR limit OR limits OR broken OR cancel OR cancelled OR \"not worth\")" },
+    { "label": "asking for an alternative", "query": "(\"alternative to\" OR \"switch from\" OR \"moving off\") (\"Competitor One\" OR \"Competitor Two\")" },
+    { "label": "wishes it existed", "query": "(\"wish there was\" OR \"is there a tool\" OR \"is there an app\" OR \"anyone know a\") (your category words)" },
+    { "label": "asking for recommendations", "query": "(\"what do you use for\" OR \"recommend a\" OR \"best tool for\") (your category words)" }
+  ],
+  "skip_accounts": ["competitorone", "competitortwo"],
+  "skip_words": ["airdrop", "giveaway", "memecoin", "\\$[A-Za-z]{2,}\\b"],
+  "max_followers": 150000,
+  "daily_reply_limit": 10,
+  "min_minutes_between_posts": 3,
+  "browser": { "channel": "chrome" }
+}

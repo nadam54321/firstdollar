@@ -1,0 +1,39 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>mock reply page</title>
+<body>
+<article>@bob: I keep hitting my weekly cap, what should I use instead?</article>
+<div id="gate"></div>
+<div id="rt">Replying to <a href="#" id="rt-link">@bob and @bigbrand</a></div>
+<div data-testid="tweetTextarea_0" contenteditable="true" style="min-height:40px;border:1px solid"></div>
+<button data-testid="tweetButtonInline">Reply</button>
+<div role="dialog" hidden>
+  <div class="row"><span>Bob</span><span>@Bob</span><div role="checkbox" aria-checked="true" tabindex="0">x</div></div>
+  <div class="row"><span>Big Brand</span><span>@BigBrand</span><div role="checkbox" aria-checked="true" tabindex="0">x</div></div>
+  <button>Done</button>
+</div>
+<script>
+  const mode = new URLSearchParams(location.search).get('mode');
+  const box = document.querySelector('[data-testid="tweetTextarea_0"]');
+  window.shortcuts = '';
+  document.addEventListener('keydown', e => { if (!e.target.closest || !e.target.closest('[contenteditable="true"]')) window.shortcuts += e.key; });
+  if (mode === 'login') { document.body.innerHTML = '<h1>Log in to X</h1>'; }
+  if (mode === 'nofocus') { box.setAttribute('contenteditable', 'false'); }
+  if (mode === 'mangle') { box.addEventListener('input', () => { if (box.innerText.endsWith('!')) box.innerText = box.innerText.slice(0, -1); }); }
+  document.getElementById('rt-link').addEventListener('click', e => { e.preventDefault(); document.querySelector('[role="dialog"]').hidden = false; });
+  document.querySelectorAll('[role="checkbox"]').forEach(c => c.addEventListener('click', () =>
+    c.setAttribute('aria-checked', c.getAttribute('aria-checked') === 'true' ? 'false' : 'true')));
+  document.querySelector('[role="dialog"] button').addEventListener('click', () => {
+    const kept = [...document.querySelectorAll('.row')].filter(r => r.querySelector('[role="checkbox"]').getAttribute('aria-checked') === 'true')
+      .map(r => r.querySelectorAll('span')[1].textContent);
+    document.getElementById('rt-link').textContent = kept.join(' and ');
+    document.querySelector('[role="dialog"]').hidden = true;
+  });
+  document.querySelector('[data-testid="tweetButtonInline"]').addEventListener('click', () => {
+    window.sentText = box.innerText;
+    const toast = document.createElement('div');
+    toast.setAttribute('data-testid', 'toast');
+    toast.innerHTML = 'Your post was sent. <a href="/me/status/12345">View</a>';
+    document.body.appendChild(toast);
+  });
+</script>

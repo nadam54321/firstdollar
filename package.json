@@ -1,0 +1,15 @@
+{
+  "name": "firstdollar",
+  "version": "0.1.0",
+  "description": "Find people on X who are asking for what you built, reply personally, post after approval, and track them to orders.",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "python3 -m unittest discover -s tests && node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "playwright-core": "^1.55.0"
+  }
+}

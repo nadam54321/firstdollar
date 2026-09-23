@@ -1,0 +1,10 @@
+node_modules/
+data/
+.env
+.env.*
+config.json
+brand.md
+__pycache__/
+*.pyc
+.DS_Store
+.npm-cache/

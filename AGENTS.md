@@ -72,9 +72,8 @@ python3 scripts/archive.py prospect POST_ID skipped --reason 'happy on their own
 Run `python3 scripts/archive.py voice` first and match those posts: their length, casing,
 punctuation and way of opening. Do not copy their typing mistakes. One reply per person:
 
-- decide first what the reply is for: answer their question, argue with their take, give a tip,
-  or offer the product only when they are looking for a solution; many replies should not
-  mention it, since the profile carries the link;
+- the reply exists to win a customer: make it plain the product meets their need; if the only
+  honest reply is casual chat or a tip without the product, skip the person instead;
 - open with their specific point, not a greeting or a slogan;
 - when you do mention the product, one fact that matters to this person or one linked demo from
   `brand.md`, never the same product sentence every time and never a feature list;
